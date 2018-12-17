@@ -1,0 +1,91 @@
+body{
+    background-color: skyblue;
+}
+
+img{
+    height: 639px;
+    width: 480px;
+}
+
+/* the card is the grandparent and is the cube; it is a 3d place for children to play inside of */
+.card{
+    width: 480px;
+    height: 639px;
+    perspective: 2000px; /*changing this will change the way to card rotates over. lower is much bigger*/
+    border: 2px solid brown;
+}
+/* this is a child of the parent and IS ABLE TO PLAY IN 3d land */
+/* card-holder moves within the card "cube" */
+.card-holder{
+    width: 480px;
+    transition: all 5s;
+    position: relative;  /* the children of card-holder will have an absolute position */
+    /* now tell all child elements, card0back and card-front, they are in 3d land. when you
+    transfrom, do so like a good 3d child */
+    transform-style: preserve-3d;
+    
+    /* THIS MOVES THE X AXIS, Y-AXIS, and/or Z-AXIS */
+    /*transform-origin: 20% 40%; one for the x axis, one for the y-axis, and third, the z-acess an example of 
+    using this would be when you are opening a door?*/
+}
+.card-front, .card-back{
+    /* we gave card-holder a position of relative so left 0 will nbe the left side of card-holder */
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* If you can't see the front... you can't see anything... */
+    backface-visibility: hidden;
+    /* transition: all 2s; */
+}
+
+.card-front{ /* this is the backside of the front card. */
+    transform: rotateY(180deg);
+}
+.flip{
+    transform: rotateY(180deg);
+}
+
+
+/* Make the parent div obvious: */
+#parent{
+    height: 200px;
+    width: 200px;
+    margin: 50px;
+    padding: 10px;
+    background-color: #4f5f6f;   
+    /* perspective: 200px; */
+    perspective: 150px;
+    /* the higher the number, the further away it appears, vs lowering the number, brings the prespective 
+    really close */
+}
+
+/* PERSPECTIVE:
+The perspective property is used to give a 3D-positioned element some perspective.
+
+The perspective property defines how far the object is away from the user. So, a lower value will result 
+in a more intensive 3D effect than a higher value.
+
+When defining the perspective property for an element, it is the CHILD elements that get the 
+perspective view, NOT the element itself. */
+
+
+
+#parent div{
+    padding: 50px;
+    border: 1px solid #0912ee;
+}
+
+#threeD{
+    background-color: #0f0;
+    transform: rotateX(45deg);
+}
+
+#threeD2{
+    background-color: purple;
+    transform: rotateY(45deg);
+}
+
+#threeD3{
+    background-color: orange;
+    transform: rotateZ(45deg);
+}
